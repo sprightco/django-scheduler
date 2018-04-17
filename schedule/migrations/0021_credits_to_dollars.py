@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from decimal import Decimal
 from django.db import migrations, models
+from django.db.models import Q
 from ..models import Event
 
 def migrate(*_):
@@ -12,6 +13,9 @@ def migrate(*_):
         event.save()
     for event in Event.objects.filter(cost__gte=100):
         event.price = event.cost / 100
+        event.save()
+    for event in Event.objects.filter(Q(cost=35)|Q(cost=3500)):
+        event.price = 30
         event.save()
     Event.objects.filter(cost=0).update(price=0)
 
