@@ -584,10 +584,6 @@ class Occurrence(with_metaclass(ModelBase, *get_model_bases('Occurrence'))):
 
     def __init__(self, *args, **kwargs):
         super(Occurrence, self).__init__(*args, **kwargs)
-        if not self.title and self.event_id:
-            self.title = self.event.title
-        if not self.description and self.event_id:
-            self.description = self.event.description
 
     def moved(self):
         return self.original_start != self.start or self.original_end != self.end
