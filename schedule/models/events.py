@@ -564,8 +564,6 @@ class EventRelation(with_metaclass(ModelBase, *get_model_bases('EventRelation'))
 @python_2_unicode_compatible
 class Occurrence(with_metaclass(ModelBase, *get_model_bases('Occurrence'))):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name=_("event"))
-    title = models.CharField(_("title"), max_length=255, blank=True)
-    description = models.TextField(_("description"), blank=True)
     start = models.DateTimeField(_("start"), db_index=True)
     end = models.DateTimeField(_("end"), db_index=True)
     cancelled = models.BooleanField(_("cancelled"), default=False)
@@ -573,6 +571,9 @@ class Occurrence(with_metaclass(ModelBase, *get_model_bases('Occurrence'))):
     original_end = models.DateTimeField(_("original end"))
     created_on = models.DateTimeField(_("created on"), auto_now_add=True)
     updated_on = models.DateTimeField(_("updated on"), auto_now=True)
+
+    o_title = models.CharField(_("title"), max_length=255, blank=True)
+    o_description = models.TextField(_("description"), blank=True)
 
     class Meta(object):
         verbose_name = _("occurrence")
