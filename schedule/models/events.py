@@ -572,8 +572,8 @@ class Occurrence(with_metaclass(ModelBase, *get_model_bases('Occurrence'))):
     created_on = models.DateTimeField(_("created on"), auto_now_add=True)
     updated_on = models.DateTimeField(_("updated on"), auto_now=True)
 
-    o_title = models.CharField(_("title"), max_length=255, blank=True)
-    o_description = models.TextField(_("description"), blank=True)
+    o_title = models.CharField(db_column='title', max_length=255, null=True)
+    o_description = models.TextField(db_column='description', null=True)
 
     class Meta(object):
         verbose_name = _("occurrence")
