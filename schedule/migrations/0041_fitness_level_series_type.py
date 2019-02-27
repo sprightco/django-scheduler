@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='series_type',
-            field=models.CharField(choices=[('regularly scheduled', 'regularly scheduled'), ('local pop-up', 'local pop-up'), ('visiting pop-up', 'visiting pop-up')], max_length=32, null=True),
+            field=models.CharField(choices=[('regularly scheduled', 'regularly scheduled'), ('local popup', 'local popup'), ('visiting popup', 'visiting popup')], max_length=32, null=True),
         ),
     ]
